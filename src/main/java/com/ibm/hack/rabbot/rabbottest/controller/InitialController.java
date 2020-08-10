@@ -24,7 +24,7 @@ public class InitialController {
 
 
     @GetMapping(path = "/personality")
-    public String personalityTest(){
+    public Profile personalityTest(){
 
 
         IamAuthenticator authenticator = new IamAuthenticator("O4bix_w7_6v2sBgFm5MSNgkbrKLzQVpK3A1NSq2-spR4");
@@ -47,12 +47,14 @@ public class InitialController {
             Profile profile =
                     personalityInsights.profile(profileOptions).execute().getResult();
             System.out.println(profile);
+
+            return profile;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
 
-        return "OK";
+        return null;
     }
 
 }
