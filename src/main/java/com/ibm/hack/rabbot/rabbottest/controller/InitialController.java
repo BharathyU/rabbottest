@@ -2,22 +2,50 @@ package com.ibm.hack.rabbot.rabbottest.controller;
 
 
 import com.ibm.cloud.sdk.core.security.IamAuthenticator;
+import com.ibm.hack.rabbot.rabbottest.Service.StorageGateWay;
 import com.ibm.watson.personality_insights.v3.PersonalityInsights;
 import com.ibm.watson.personality_insights.v3.model.Profile;
 import com.ibm.watson.personality_insights.v3.model.ProfileOptions;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@RequestMapping(path="/backend")
 public class InitialController {
+
+    @Autowired
+    private StorageGateWay storageGateWay;
 
     @GetMapping(path = "/ping")
     public String pingTest(){
         return "OK";
     }
+
+@PostMapping
+    public String verifyFile(@RequestBody String text ,@RequestParam String par){
+
+        System.out.println("param"+par +"text"+text);
+
+
+    String result=    storageGateWay.verifyFileInStorage(text);
+
+
+    System.out.println("result"+result);
+        //Connect to Ibm storage and verify file is available
+        return "Ok";
+
+    }
+
+    @PostMapping
+    public String verifyPhoto(@RequestBody String text ,@RequestParam String par){
+
+
+        return "Ok";
+
+    }
+
+
 
 
     @PostMapping(path = "/personality")
