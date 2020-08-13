@@ -53,19 +53,21 @@ public class InitialController {
 		case "saveInterviewAnswer":
 			response = interviewDetailsService.saveAnswer(rabbotRequest.getId(), rabbotRequest.getSubject(),
 					rabbotRequest.getAnswer());
-			break;
-			
+			break;		
 		case "consolidatedScore":
 			response = interviewDetailsService.getScore(rabbotRequest.getId(),rabbotRequest.getSubject());
 			break;
+		case "checkPersonality":
+			Profile profile = personalityTest(rabbotRequest.getData());
+			response = "He has personality as " +profile.getPersonality().get(0).getName() + 
+					" and "+profile.getPersonality().get(0).getChildren().get(0).getName();
 		}
 		responseMap.put("result", response);
 		return responseMap;
 
 	}
 
-	@PostMapping(path = "/personality")
-	public Profile personalityTest(@RequestBody String text) {
+	public Profile personalityTest( String text) {
 
 		IamAuthenticator authenticator = new IamAuthenticator("O4bix_w7_6v2sBgFm5MSNgkbrKLzQVpK3A1NSq2-spR4");
 		PersonalityInsights personalityInsights = new PersonalityInsights("2017-10-13", authenticator);
