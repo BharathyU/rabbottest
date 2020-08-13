@@ -1,11 +1,24 @@
 package com.ibm.hack.rabbot.rabbottest.model;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 public class RabbotRequest {
-	
+
+	@JsonProperty("interviewId")
+	private String id;
+
+	@JsonProperty("operation")
+	private String operation;
+
+	@JsonProperty("subject")
+	private String subject;
+
+	@JsonProperty("answer")
+	private String answer;
+
+	@JsonProperty("data")
+	private String data;
+
 	public String getId() {
 		return id;
 	}
@@ -22,11 +35,28 @@ public class RabbotRequest {
 		this.operation = operation;
 	}
 
-	@JsonProperty("interviewId")
-	private String id;
-	
-	@JsonProperty("operation")
-	private String operation;
-	
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
 
 }

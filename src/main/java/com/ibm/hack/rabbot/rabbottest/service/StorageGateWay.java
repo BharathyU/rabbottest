@@ -1,4 +1,4 @@
-package com.ibm.hack.rabbot.rabbottest.Service;
+package com.ibm.hack.rabbot.rabbottest.service;
 
 import com.ibm.cloud.objectstorage.ClientConfiguration;
 import com.ibm.cloud.objectstorage.auth.AWSCredentials;
