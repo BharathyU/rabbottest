@@ -28,22 +28,15 @@ public class InitialController {
         System.out.println("param"+par +"text"+text);
 
 
-    String result=    storageGateWay.verifyFileInStorage(text);
+//    String result=    storageGateWay.verifyFileInStorage(text);
 
 
-    System.out.println("result"+result);
+   // System.out.println("result"+result);
         //Connect to Ibm storage and verify file is available
         return "Ok";
 
     }
 
-    @PostMapping
-    public String verifyPhoto(@RequestBody String text ,@RequestParam String par){
-
-
-        return "Ok";
-
-    }
 
 
 
