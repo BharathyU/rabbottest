@@ -7,6 +7,9 @@ import com.ibm.hack.rabbot.rabbottest.model.RabbotRequest;
 import com.ibm.watson.personality_insights.v3.PersonalityInsights;
 import com.ibm.watson.personality_insights.v3.model.Profile;
 import com.ibm.watson.personality_insights.v3.model.ProfileOptions;
+
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +28,7 @@ public class InitialController {
     }
 
 @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE )
-    public String verifyFile(@RequestBody RabbotRequest rabbotRequest){
+    public HashMap<String, String> verifyFile(@RequestBody RabbotRequest rabbotRequest){
       //  System.out.println("param"+par +"text"+text);
 //    String result=    storageGateWay.verifyFileInStorage(text);
    // System.out.println("result"+result);
@@ -33,6 +36,7 @@ public class InitialController {
 	
 	String response = "Unkown operation";
 	
+	HashMap<String,String> responseMap = new HashMap<>();
 	switch(rabbotRequest.getOperation()){
 	case "verifyFile":
 		response = "File is verified";
@@ -41,7 +45,8 @@ public class InitialController {
 		response = "Photo is verfied successfully";
 		break;
 	}
-        return response;
+        responseMap.put("result", response);
+		return responseMap;
 
     }
 
