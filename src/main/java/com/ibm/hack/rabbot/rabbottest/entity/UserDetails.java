@@ -28,7 +28,7 @@ public class UserDetails {
 	@Column(name = "INTERVIEW_CODE")
 	private String interviewCode;
 
-	@Column(name = "details")
+	@Column(name = "DETAILS")
 	private String details;
 
 	public UserDetails(Long id, String userName, String interviewCode, String details) {
