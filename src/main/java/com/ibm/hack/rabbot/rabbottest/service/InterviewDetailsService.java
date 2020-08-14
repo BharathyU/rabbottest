@@ -25,9 +25,10 @@ public class InterviewDetailsService {
 		}
 	}
 
-	public String saveAnswer(String interviewId, String subject, String answer) {
+	public String saveAnswer(String interviewId, String subject, String answer, String data) {
 
 		try {
+			answer = updateAnswerValue(interviewId, subject, answer, data);
 		InterviewDetails interviewDetails = new InterviewDetails(interviewId, subject, answer);
 		interviewDetailsRepository.save(interviewDetails);
 		return "Record is added successfully";
@@ -35,6 +36,19 @@ public class InterviewDetailsService {
 		catch(Exception e) {
 			return "Exception in adding the record";
 		}
+	}
+
+	private String updateAnswerValue(String interviewId, String subject, String answer, String data) {
+		
+		if("java1".equals(data) && "3".equals(answer) || "java2".equals(data) && "4".equals(answer) || "java3".equals(data) && "3".equals(answer) 
+				|| "java4".equals(data) && "1".equals(answer)|| "java5".equals(data) && "2".equals(answer)) {
+		return "correct";
+		}
+		if("php1".equals(data) && "3".equals(answer) || "php2".equals(data) && "4".equals(answer) || "php3".equals(data) && "3".equals(answer) 
+				|| "php4".equals(data) && "1".equals(answer)|| "php5".equals(data) && "2".equals(answer)) {
+			return "correct";
+		}
+		return "incorrect";
 	}
 
 	public String getScore(String interviewId, String subject) {

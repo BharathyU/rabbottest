@@ -52,7 +52,7 @@ public class InitialController {
 			break;
 		case "saveInterviewAnswer":
 			response = interviewDetailsService.saveAnswer(rabbotRequest.getId(), rabbotRequest.getSubject(),
-					rabbotRequest.getAnswer());
+					rabbotRequest.getAnswer(),rabbotRequest.getData());
 			break;		
 		case "consolidatedScore":
 			response = interviewDetailsService.getScore(rabbotRequest.getId(),rabbotRequest.getSubject());
