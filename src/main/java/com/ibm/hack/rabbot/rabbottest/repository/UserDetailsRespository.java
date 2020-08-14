@@ -10,7 +10,7 @@ import com.ibm.hack.rabbot.rabbottest.entity.UserDetails;
 @Repository
 public interface UserDetailsRespository extends JpaRepository<UserDetails, Long>{
 	
-	@Query(value ="SELECT USER_NAME FROM USER_DETAILS WHERE INTERVIEW_CODE = :interviewCode",nativeQuery = true)
+	@Query(value ="SELECT user_name FROM user_details WHERE interview_code = :interviewCode",nativeQuery = true)
 	String checkInterviewCode(@Param("interviewCode") String interviewCode);
 
 }

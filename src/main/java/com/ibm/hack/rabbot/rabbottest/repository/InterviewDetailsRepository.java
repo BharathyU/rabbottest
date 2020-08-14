@@ -10,7 +10,7 @@ import com.ibm.hack.rabbot.rabbottest.entity.InterviewDetails;
 @Repository
 public interface InterviewDetailsRepository extends JpaRepository<InterviewDetails, Long>{
 
-	@Query(value= "SELECT COUNT(0) FROM INTERVIEW_DETAILS WHERE INTERVIEW_CODE =:interviewId AND SUBJECT =:subject AND ANSWER = 'correct'",nativeQuery = true)
+	@Query(value= "SELECT COUNT(0) FROM interview_details WHERE interview_code =:interviewId AND subject =:subject AND answer = 'correct'",nativeQuery = true)
 	int getScore(@Param("interviewId") String interviewId, @Param("subject")String subject);
 
 }
