@@ -54,7 +54,13 @@ public class InterviewDetailsService {
 	public String getScore(String interviewId, String subject) {
 	
 		int score = interviewDetailsRepository.getScore(interviewId,subject);
-		return "The score for subject "+subject + " is " + score;
+		if(score<3) {
+			return "The score for subject "+subject + " is " + score + ".Please improve your " + subject + " skills ";
+		}
+		else {
+			return "The score for subject "+subject + " is " + score;
+		}
+
 		
 	}
 
